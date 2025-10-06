@@ -7807,6 +7807,25 @@
                 </div>
             </div>
         </div>
+                <script>
+            // ===== Proctoring: Ngăn thao tác copy/cut/chuột phải =====
+
+            // Chặn menu chuột phải
+            document.addEventListener("contextmenu", e => e.preventDefault());
+
+            // Chặn copy + cut (Ctrl+C, Ctrl+X, ⌘+C, ⌘+X, menu chuột phải)
+            ["copy", "cut"].forEach(evt =>
+                document.addEventListener(evt, e => e.preventDefault())
+            );
+
+            // Chặn double-click (thường để chọn từ rồi hiện menu context)
+            document.addEventListener("mousedown", e => {
+                if (e.detail > 1) {
+                    e.preventDefault();
+                }
+            });
+        </script>
 </body>
 
 </html>
+
